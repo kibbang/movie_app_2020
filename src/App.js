@@ -1,23 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import PropTypes from 'prop-types'; 
+
+const food = [
+  {
+    id: 1,
+    name: 'cow',
+    rating: 5
+  },
+
+  {
+    id: 2,
+    name: 'pig',
+    rating: 3.6
+
+  },
+
+  {
+    id: 3,
+    name: 'apple',
+    rating: 2.7
+
+  },
+
+  {
+    id: 4,
+    name: 'banana',
+    rating: 4
+
+  },
+
+  {
+    id: 5,
+    name: 'fish',
+    rating: 3.9
+
+  },
+]
+ 
+function Food({ name, rating }){
+  return (
+    <div>
+      <h1>I love {name}</h1>
+      <h2>{rating} / 5.0</h2>
+    </div>
+  );
+}
+
+Food.propTypes = {
+  name: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {food.map(dish=>(
+        <Food key = { dish.id } name = { dish.name } rating= { dish.rating } />
+      ))}
     </div>
   );
 }
